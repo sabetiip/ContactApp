@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ContactListViewModel.filterContacts(text:):ContactListViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "contacts.filter({ ($0.name?.contains(text) ?? false) })">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ContactTableViewCell.contact.didset:ContactTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "contactImageView.image">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ContactListViewController.tableView(_:didSelectRowAt:):ContactListViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ContactListViewController.tableView(_:cellForRowAt:):ContactListViewController.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
