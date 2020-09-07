@@ -30,5 +30,13 @@ class ContactAppTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testFavoriteContactsMethod() {
+        let vm = ContactListViewModel()
+        vm.loadContacts()
+        vm.favoriteContacts()
+        XCTAssertTrue(vm.filterContacts.count == 0)
+        XCTAssertTrue(vm.filterContacts.count > 0)
+    }
 
 }
