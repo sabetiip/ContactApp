@@ -33,12 +33,7 @@ class ContactTableViewCell: UITableViewCell {
                 contactNameLabel.text = contact.phoneNumbers?.first
             }
             
-            if let phoneNumbers = contact.phoneNumbers, phoneNumbers.count > 1 {
-                contactPhoneLabel.isHidden = true
-            } else {
-                contactPhoneLabel.isHidden = false
-                contactPhoneLabel.text = contact.phoneNumbers?.first
-            }
+            contactPhoneLabel.text = contact.phoneNumbers?.first
             
             favoriteButton.setImage(contact.isFavorite ? #imageLiteral(resourceName: "starFill") : #imageLiteral(resourceName: "star"), for: .normal)
         }

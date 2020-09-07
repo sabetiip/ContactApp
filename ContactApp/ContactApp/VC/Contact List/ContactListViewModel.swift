@@ -23,6 +23,10 @@ class ContactListViewModel {
         filterContacts = text.isEmpty ? contacts : contacts.filter({ ($0.name?.contains(text) ?? false) })
     }
     
+    func favoriteContacts() {
+        filterContacts = contacts.filter({ $0.isFavorite })
+    }
+    
     func toggleFavoriteContactAt(index: Int) {
         filterContacts[index].isFavorite = !filterContacts[index].isFavorite
         if let baseIndex = contacts.firstIndex(where: { $0.id == filterContacts[index].id }) {

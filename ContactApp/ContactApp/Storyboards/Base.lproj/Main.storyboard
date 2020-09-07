@@ -44,12 +44,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Contacts" id="KOR-Hz-I0l">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="uhr-cE-ojO">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="editAction:" destination="BYZ-38-t0r" id="7rR-xw-VpT"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" id="PEe-Fb-bVm"/>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="DVT-XI-rXg" id="laC-s6-yt1"/>
@@ -85,7 +80,7 @@
     </scenes>
     <resources>
         <namedColor name="Navigation Color">
-            <color red="0.42672011303859608" green="0.054472478589580792" blue="0.71152444948186533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.335999995470047" green="0.039000000804662704" blue="0.55299997329711914" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

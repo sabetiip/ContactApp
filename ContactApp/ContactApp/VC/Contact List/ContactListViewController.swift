@@ -20,9 +20,13 @@ class ContactListViewController: UIViewController {
     
     var viewModel = ContactListViewModel()
     var isEditingMode = false
+    var isFavoriteMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editAction(_:)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "starNavItemFill"), style: .done, target: self, action: #selector(showFavoriteList(_:)))
         
         viewModel.loadContacts()
     }
@@ -35,7 +39,18 @@ class ContactListViewController: UIViewController {
         } else {
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editAction(_:)))
         }
-        navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
+        tableView.reloadData()
+    }
+    
+    @IBAction func showFavoriteList(_ sender: Any) {
+        isFavoriteMode = !isFavoriteMode
+        if isFavoriteMode {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "starNavItem"), style: .done, target: self, action: #selector(showFavoriteList(_:)))
+            viewModel.favoriteContacts()
+        } else {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "starNavItemFill"), style: .done, target: self, action: #selector(showFavoriteList(_:)))
+            viewModel.filterContacts(text: "")
+        }
         tableView.reloadData()
     }
 }
@@ -59,6 +74,20 @@ extension ContactListViewController: UITableViewDataSource, UITableViewDelegate 
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let phoneNumber = viewModel.filterContacts[indexPath.row].phoneNumbers?.first,
+            let url = URL(string: "tel://\(phoneNumber)"),
+            UIApplication.shared.canOpenURL(url) {
+            
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
     }
 }
 
